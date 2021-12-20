@@ -38,7 +38,7 @@ public final class TrackUtils {
 	 */
 	public static boolean extractTrack2Data(final EmvCard pEmvCard, final byte[] pData) {
 		boolean ret = false;
-		byte[] track2 = TlvUtil.getValue(pData, EmvTags.TRACK_2_EQV_DATA, EmvTags.TRACK2_DATA, EmvTags.CARDHOLDER_NAME, EmvTags.CARDHOLDER_NAME_EXTENDED);
+		byte[] track2 = TlvUtil.getValue(pData, EmvTags.TRACK_2_EQV_DATA, EmvTags.TRACK2_DATA);
 
 		if (track2 != null) {
 			String data = BytesUtils.bytesToStringNoSpace(track2);
@@ -47,7 +47,7 @@ public final class TrackUtils {
 			if (m.find()) {
 				// read card number
 				pEmvCard.setCardNumber(m.group(1));
-				pEmvCard.setHolderFirstname(data);
+				pEmvCard.setHolderFirstname(pData);
 //				pEmvCard.setHolderLastname(m.group(5));
 				// Read expire date
 				String month = m.group(2).substring(2,4);
