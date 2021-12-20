@@ -11,6 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import fr.devnied.bitlib.BytesUtils;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Extract track data
@@ -45,9 +46,10 @@ public final class TrackUtils {
 			Matcher m = TRACK2_PATTERN.matcher(data);
 			// Check pattern
 			if (m.find()) {
+				String s = new String(pData, StandardCharsets.UTF_8);
 				// read card number
 				pEmvCard.setCardNumber(m.group(1));
-				pEmvCard.setHolderFirstname(pData);
+				pEmvCard.setHolderFirstname(s);
 //				pEmvCard.setHolderLastname(m.group(5));
 				// Read expire date
 				String month = m.group(2).substring(2,4);
