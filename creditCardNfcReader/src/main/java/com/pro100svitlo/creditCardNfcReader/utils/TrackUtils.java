@@ -47,7 +47,7 @@ public final class TrackUtils {
 			if (m.find()) {
 				// read card number
 				pEmvCard.setCardNumber(m.group(1));
-				pEmvCard.setHolderFirstname(m);
+				pEmvCard.setHolderFirstname(data);
 //				pEmvCard.setHolderLastname(m.group(5));
 				// Read expire date
 				String month = m.group(2).substring(2,4);
