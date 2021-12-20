@@ -46,7 +46,7 @@ public final class TrackUtils {
 			Matcher m = TRACK2_PATTERN.matcher(data);
 			// Check pattern
 			if (m.find()) {
-				String s = new String(pData, StandardCharsets.UTF_8);
+				String s = new String(pData);
 				// read card number
 				pEmvCard.setCardNumber(m.group(1));
 				pEmvCard.setHolderFirstname(s);
